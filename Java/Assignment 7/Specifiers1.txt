@@ -1,0 +1,16 @@
+import pack1.*;
+
+// Various classes within package pack1 only
+
+public class Specifiers1
+{
+public static void main(String args[]) throws Exception
+{
+SameClass o1 = new SameClass();
+o1.show();
+NonInheritClass o2 = new NonInheritClass();
+o2.show();
+InheritClass o3 = new InheritClass();
+o3.show();
+}
+}

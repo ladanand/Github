@@ -1,0 +1,14 @@
+import pack2.*;
+
+//Various classes in package pack2
+
+public class Specifiers2
+{
+	public static void main(String args[]) 
+	{
+		NonInheritClass o1 = new NonInheritClass();
+		o1.show();
+		InheritClass o2= new InheritClass();
+		o2.show();
+	}
+}

@@ -1,0 +1,26 @@
+package pack1;
+
+public class SameClass
+{
+	int noacc;
+	private int pri;
+	protected int pro;
+	public int pub;
+
+	public SameClass()
+	{
+	noacc = 111;
+	pri = 222;
+	pro = 333;
+	pub = 444;
+	}
+	
+	public void show()
+	{
+		System.out.println("\n IN SAME CLASS...");
+		System.out.println("	NO ACCESS MEMBER = " +noacc);
+		System.out.println("	PRIVATE MEMBER = " +pri);
+		System.out.println("	PROTECTED MEMBER = " +pro);
+		System.out.println("	PUBLIC MEMBER = " +pub);
+	}
+}

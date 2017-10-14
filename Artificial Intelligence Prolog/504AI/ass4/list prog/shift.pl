@@ -1,0 +1,1 @@
+shift([H|T],Lshift):-append(T,[H],Lshift).

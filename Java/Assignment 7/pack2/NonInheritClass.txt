@@ -1,0 +1,22 @@
+package pack2;
+
+public class NonInheritClass
+{
+pack1.SameClass s;
+	public NonInheritClass()
+	{
+		s= new pack1.SameClass();
+	}
+	
+	public void show()
+	{
+		System.out.println("\n IN NON-INHERITED CLASS(OUTSIDE PACKAGE)...");
+		//System.out.println("	NOACCESS MEMBER= " +s.noacc);
+		System.out.println("	NOACCESS MEMBER NOT ACCESSIBLE");
+		//System.out.println("	PRIVATE MEMBER = " +s.pri);
+		System.out.println("	PRIVATE MEMBER NOT ACCESSIBLE");
+		//System.out.println("	PROTECTED MEMBER = " +s.pro);
+		System.out.println("	PROTECTED MEMBER NOT ACCESSIBLE");
+		System.out.println("	PUBLIC MEMBER = " +s.pub);
+	}
+}

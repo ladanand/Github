@@ -1,0 +1,138 @@
+import java.io.*;
+
+class MyStack
+{
+static int top=0;
+int s[]=new int[5];
+
+synchronized void push(int n)
+{
+boolean flag1;
+flag1=false;
+if(flag1)
+{
+        try{    wait();     }
+        catch(InterruptedException ie){ }
+}
+top++;
+try{    s[top-1]=n;     }
+catch(ArrayIndexOutOfBoundsException ae){       }
+flag1=true;
+notify();
+}
+
+synchronized int pop()
+{
+int e=0;
+boolean flag2;
+flag2=false;
+if(flag2)
+{
+        try{    wait();     }
+        catch(InterruptedException ie){         }
+}
+try{    e=s[top-1];     }
+catch(ArrayIndexOutOfBoundsException ae){       }
+top--;
+flag2=true;
+notify();
+return e;
+}
+void printStack()
+{
+System.out.print("\n   STACK IS: ");
+for(int i=0;i<top;i++)
+{   System.out.print("   "+s[i]);   }
+System.out.println("\n\n");
+}
+
+}
+
+class Push implements Runnable
+{
+MyStack spush;
+int ele;
+Thread t;
+
+Push(MyStack s,int p)
+{
+ele=p;
+spush=s;
+t=new Thread(this);
+t.start();
+}
+public void run()
+{
+spush.push(ele);
+}  }
+class Pop implements Runnable
+{
+MyStack spop;
+Thread t;
+int ele;
+
+Pop(MyStack s)
+{
+spop=s;
+t=new Thread(this);
+t.start();
+}
+public void run()
+{
+ele=spop.pop();
+System.out.print("\n   POPED ELEMENT: "+ele);
+}  }
+
+public class UserStack1
+{
+public static void main(String s[])throws Exception
+{
+MyStack ms=new MyStack();
+int choice,element;
+BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+
+while(true)
+{
+System.out.println("\n YOU CAN PUSH OR POP ONTO STACK: ");
+System.out.println(" 1.PUSH: ");
+System.out.println(" 2.POP: ");
+System.out.println(" 3.EXIT: ");
+System.out.print("\n ENTER YOUR CHOICE: ");
+choice=Integer.parseInt(br.readLine());
+
+if(choice==1)
+{
+   if(ms.top==5)
+   {  System.out.println("\n STACK IS FULL, CAN NOT PUSH ELEMENT...");  }
+   else
+   {
+   System.out.print("\n ENTER ELEMENT TO PUSH: ");
+   element=Integer.parseInt(br.readLine());
+   Push p1=new Push(ms,element);
+
+      try{    p1.t.join();   ms.printStack();   }
+      catch(Exception ex){   }
+   }
+}
+else if(choice==2)
+{
+   if(ms.top==0)
+   {  System.out.println("STACK IS EMPTY, CAN NOT POP ELEMENT...");   }
+   else
+   {
+   Pop p2=new Pop(ms);
+
+      try{   p2.t.join();   ms.printStack();   }
+      catch(Exception ex){   }
+   }
+}
+else if(choice==3)
+{
+System.out.println("\n EXITED FROM PROGRAM: ");
+System.exit(0);
+}
+else
+{  System.out.println("\n WRONG CHOICE, ENTER PROPER CHOICE...");  }
+}
+
+}  }

@@ -1,0 +1,14 @@
+is_human(jay).
+is_human(amit).
+is_human(anu).
+has_cat(jay,honey).
+has_cat(amit,mini).
+has_cat(anu,rani).
+is_cat(mini).
+is_cat(rani).
+is_cat(honey).
+beautiful(honey).
+beautiful(mini).
+not_lazy(rani).
+not_lazy(mini).
+likes(X,Y):-is_human(X),is_cat(Y),has_cat(X,Y),beautiful(Y),not_lazy(Y),X\=Y.

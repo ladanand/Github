@@ -1,0 +1,20 @@
+package pack2;
+
+public class InheritClass extends pack1.SameClass
+{
+	public InheritClass()
+	{
+		super();
+	}
+	
+	public void show()
+	{
+		System.out.println("\n IN INHERITED CLASS(OUTSIDE PACKAGE)...");
+		//System.out.println("	NO ACCESS MEMBER = "+noacc);
+		System.out.println("	NOACCESS MEMBER NOT ACCESSIBLE");
+		// System.out.println("	PRIVATE MEMBER = "+pri);
+		System.out.println("	PRIVATE MEMBER NOT ACCESSIBLE");
+		System.out.println("	PROTECTED MEMBER = "+pro);
+		System.out.println("	PUBLIC MEMBER = "+pub);
+	}
+}
